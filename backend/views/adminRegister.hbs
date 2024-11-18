@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin register</title>
+</head>
+<body>
+    {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+    {{/if}}
+<form action="/admin/register" method="POST">
+    <input placeholder="Username" name="username" id="username" type="text" required>
+    <input placeholder="Password" name="password" id="password" type="password" required>
+    <input placeholder="Secret Code" name="secretCode" id="secretCode" type="password" required>
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

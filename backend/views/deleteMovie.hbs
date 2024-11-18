@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Movie List</title>
+</head>
+<body>
+    <h1>Delete Movie List</h1>  
+    {{#each movies}}
+    <div class="movieDetailsContainer">
+        <div class="posterContainer">
+            {{!-- / is missing after original --}}
+            <img src="https://image.tmdb.org/t/p/original{{this.posterPath}}" alt="Movie poster">
+        </div>
+        <div class="detailsTextContainer">
+          
+            <h2>{{this.title}}</h2>
+            <p>{{this.overview}}</p>
+            <p>Release Date{{this.releaseDate}}</p>
+            <form action="/delete-movie/{{this._id}}" method="post">
+            <button type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    {{/each}}    
+</body>
+<style>
+    .movieDetailsContainer {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin-inline: 10rem;
+    }
+    .posterContainer {
+        display: flex;
+    }
+    .posterContainer img {
+        width: 100px;
+        height: auto;                
+    }
+</style>
+</html>

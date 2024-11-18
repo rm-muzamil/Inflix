@@ -1,0 +1,189 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Movie</title>
+  </head>
+  <body>
+    <h1>Add Movie</h1>
+    <a href="/">Go to Dashboard</a>
+    <div class="movieDetailsContainer">
+      <div class="posterContainer">
+        {{! / is missing after original }}
+        <img
+          src="https://image.tmdb.org/t/p/original{{moviedetails.posterPath}}"
+          alt="Movie poster"
+        />
+      </div>
+      <div class="detailsTextContainer">
+        <h2>{{moviedetails.title}}</h2>
+        <p>{{moviedetails.overview}}</p>
+        <p>Release Date{{moviedetails.releaseDate}}
+          +
+          {{moviedetails.genres}}
+          +
+          {{moviedetails.runtime}}min</p>
+      </div>
+    </div>
+    <form action="/add-movie-details" method="POST">
+      <label for="id">Movie Id</label>
+      <input type="text" id="id" name="id" value="{{moviedetails.id}}" /><br />
+
+      <label for="title">Title</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value="{{moviedetails.title}}"
+      /><br />
+
+      <label for="originalTitle">Original Title</label>
+      <input
+        type="text"
+        id="originalTitle"
+        name="original_title"
+        value="{{moviedetails.original_title}}"
+      /><br />
+
+      <label for="overview">Overview</label>
+      <input
+        type="text"
+        id="overview"
+        name="overview"
+        value="{{moviedetails.overview}}"
+      /><br />
+
+      <label for="ratings"></label>
+      <input
+        type="text"
+        id="ratings"
+        name="ratings"
+        value="{{moviedetails.vote_average}}"
+      /><br />
+
+      <label for="backdropPath">Backdrop Path:</label>
+      <input
+        type="text"
+        id="backdropPath"
+        name="backdrop_path"
+        value="{{moviedetails.backdrop_path}}"
+      /><br />
+
+      <label for="genreIds">Genre Id</label>
+      <input
+        type="text"
+        id="genreIds"
+        name="genreIds"
+        value="{{moviedetails.genreIds}}"
+      /><br />
+
+      <label for="genres">Genres:</label>
+      <input
+        type="text"
+        id="genres"
+        name="genres"
+        value="{{moviedetails.genres}}"
+      /><br />
+
+      <label for="budget">Budget:</label>
+      <input
+        type="text"
+        id="budget"
+        name="budget"
+        value="{{moviedetails.budget}}"
+      /><br />
+
+      <label for="popularity"></label>
+      <input
+        type="text"
+        id="popularity"
+        name="popularity"
+        value="{{moviedetails.popularity}}"
+      /><br />
+
+      <label for="posterPath">Poster Path:</label>
+      <input
+        type="text"
+        id="posterPath"
+        name="poster_path"
+        value="{{moviedetails.poster_path}}"
+      /><br />
+
+      <label for="productionCompanies">Production Companies</label>
+      <input
+        type="text"
+        id="productionCompanies"
+        name="production_companies"
+        value="{{moviedetails.production_companies}}"
+      /><br />
+
+      <label for="releaseDate">Release Date:</label>
+      <input
+        type="text"
+        id="releaswDate"
+        name="release_date"
+        value="{{moviedetails.release_date}}"
+      /><br />
+
+      <label for="revenue">Revenue</label>
+      <input
+        type="text"
+        id="revenue"
+        name="revenue"
+        value="{{moviedetails.revenue}}"
+      />
+
+      <label for="runtime">Run Time</label>
+      <input
+        type="text"
+        id="runtime"
+        name="runtime"
+        value="{{moviedetails.runtime}}"
+      /><br />
+
+      <label for="status">Status</label>
+      <input
+        type="text"
+        id="status"
+        name="status"
+        value="{{moviedetails.status}}"
+      /><br />
+
+      <label for="watchProviders">Watch Providers</label>
+      <input
+        type="text"
+        id="watchProviders"
+        name="watchProviders"
+        value="{{moviedetails.watchProviders}}"
+      /><br />
+
+      <label for="logos">Movie Logo</label>
+      <input
+        type="text"
+        id="logos"
+        name="logos"
+        value="{{moviedetails.logoFilePath}}"
+      /><br />
+
+      <label for="downloadLink">Download Link:</label>
+      <input
+        type="text"
+        id="downloadLink"
+        name="downloadLink"
+        placeholder="Enter Download Link"
+      /><br />
+      <button type="submit" class="btn-sub">Add Movie</button>
+    </form>
+    {{#if errorMessage}}
+      <p style="color:red">{{errorMessage}}</p>
+    {{/if}}
+    {{#if successMessage}}
+      <p style="color:rgb(2, 153, 10)">{{successMessage}}</p>
+    {{/if}}
+  </body>
+  <style>
+    .movieDetailsContainer { display: flex; gap: 1rem; justify-content: center;
+    align-items: center; margin-inline: 10rem; } .posterContainer { display:
+    flex; } .posterContainer img { width: 100px; height: auto; }
+  </style>
+</html>
